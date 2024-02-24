@@ -21,7 +21,10 @@ export const ResidentsContainer=styled.div`
     scrollbar-width: thin;
     scrollbar-color: transparent transparent;
 
-    
+    @media (max-width:426px) {
+        width: 100vw;
+        height: 100vh;
+    }
 `;
 
 export const ResidentDetail=styled.p`
