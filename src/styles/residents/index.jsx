@@ -7,7 +7,7 @@ export const ResidentsContainer=styled.div`
     height: 100%;
     right: 0;
     top: 0;
-    z-index: 5;
+    z-index: 6;
     background-color: rgba(0, 0, 0, 0.8);
     padding: 20px;
     box-sizing: border-box;
