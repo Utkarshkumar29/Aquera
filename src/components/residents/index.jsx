@@ -1,8 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { NoResidentMessage, ResidentDetail, ResidentsContainer } from "../../styles/residents";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faClose } from "@fortawesome/free-solid-svg-icons";
 
 const Residents=({residents})=>{
     const [residentDetails,setResidentDetails]=useState([])
