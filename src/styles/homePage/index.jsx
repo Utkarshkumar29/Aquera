@@ -122,5 +122,6 @@ export const Close=styled.div`
 
     @media (max-width:426px) {
         position: fixed;
+        padding: 10px;
     }
 `
