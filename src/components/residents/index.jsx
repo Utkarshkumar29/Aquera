@@ -9,8 +9,8 @@ const Residents=({residents})=>{
         const fetchResident=async()=>{
             try {
                 if (residents && residents.length > 0) {
-                    const details = await Promise.all(residents.map(url => axios.get(url).then(response => response.data)));
-                    setResidentDetails(details);
+                    const details = await Promise.all(residents.map(url => axios.get(url).then(response => response.data)))
+                    setResidentDetails(details)
                   }          
             } catch (error) {
                 console.log(error)    
@@ -19,12 +19,16 @@ const Residents=({residents})=>{
         fetchResident()
     },[residents])
 
+    useEffect(()=>{
+        console.log(residents)
+    })
+
     return(
         <ResidentsContainer>
             <h1>Residents</h1>
             {residentDetails.length>0 ? (
-                residentDetails.map((resident,index)=>(
-                    <ResidentDetail key={index}>
+                residentDetails.map((resident)=>(
+                    <ResidentDetail key={resident.url}>
                         <ResidentDetail>Name: {resident.name}</ResidentDetail>
                         <ResidentDetail>Height: {resident.height}</ResidentDetail>
                         <ResidentDetail>Mass: {resident.mass}</ResidentDetail>

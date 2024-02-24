@@ -10,34 +10,41 @@ import { faArrowUpRightFromSquare, faClose } from "@fortawesome/free-solid-svg-i
 const HomePage=()=>{
     const [jsonData,setJsonData]=useState([])
     const [page,setPage]=useState(1)
-    const [next,setNext]=useState('https://swapi.dev/api/planets/?format=json')
+    const [next,setNext]=useState('')
+    const [current,setCurrent]=useState('https://swapi.dev/api/planets/?format=json')
     const [previous,setPrevious]=useState('')
     const [loading,setLoading]=useState(true)
     const [showResidents,setResidents]=useState(false)
 
     const handleNext=()=>{
+        setCurrent(next)
         setPage(page+1)
     }
 
     const handlePrevious=()=>{
+        setCurrent(previous)
         setPage(page-1)
-        setNext(previous)
     }
 
     useEffect(()=>{
         const fetchData=async()=>{
             setLoading(true)
             try {
-                const response=await axios.get(next)
+                const response=await axios.get(current)
                 setJsonData(response.data.results)
-                setPrevious(next)
+                setPrevious(response.data.previous)
                 setNext(response.data.next)
                 setLoading(false)
+                console.log(previous,next,'ll')
             } catch (error) {
                 console.log("Error getting the data",error)
             }
         }
         fetchData()
+
+        return ()=>{
+            setResidents(null)
+        }
     },[page])
 
     if(loading){
@@ -80,7 +87,7 @@ const HomePage=()=>{
                     })}
                 </CardWrapper>
                 <div>
-                    <Button onClick={handlePrevious} disabled={page===1}>Previous</Button>
+                    <Button onClick={handlePrevious} disabled={previous===null}>Previous</Button>
                     <Button onClick={handleNext} disabled={page===6}>Next</Button>
                 </div>
 
