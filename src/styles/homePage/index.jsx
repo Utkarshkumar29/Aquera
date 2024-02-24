@@ -113,9 +113,14 @@ export const Close=styled.div`
     top: 0;
     z-index: 7;
     font-size: 18px;
+    margin-left: 10px;
 
     @media (max-width:500px) {
         right: 0px;
         max-width: 20px;
+    }
+
+    @media (max-width:426px) {
+        position: fixed;
     }
 `
